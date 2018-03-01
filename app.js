@@ -4,7 +4,7 @@
     var app = angular.module('rental', [ ]);
     
     app.controller('RentalController', function(){
-        this.product = LAPcars;
+        this.products = LAPcars;
     });
 
     
@@ -15,26 +15,34 @@
 // Rent now button
 // Add something else of your own choosing
     
-    var LAPcars = [
-        {
+    var LAPcars = [{
+        
 //   type: [{
 
-    //      model: "Choose",
-    //      available: "",
-    //      booked: "",
-    //      price: "",
+//          model: "Choose",
+//          available: "",
+//          booked: "",
+//          price: "",
 
-    //   },
-      
+//       },
 
          make: 'Audi',
          model: "R8 V10 Plus",
          year: 2017,
          description: 'Sport, 2 door, all wheel drive, Power comes from a 610-horsepower, 5.2-liter V10 engine.',
          available: 10,
+        //  images: [
+        //      {
+        //          full: 'images/2017-Audi-R8-V10-Plus-1-min.png',
+        //          thumb: 'images/2017-Audi-R8-V10-Plus-1-min.png',
+        //      }
+        //      ],
+             
          booked: 0,
          price: 560,
-         canPurchase: true,
+         rentaCar: true,
+         soldOut: true,
+         
       },
 
       {
@@ -45,7 +53,9 @@
          available: 10,
          booked: 0,
          price: 560,
-         canPurchase: false,
+         rentaCar: true,
+         soldOut: true,
+
       },
 
       {
@@ -56,9 +66,11 @@
          available: 10,
          booked: 0,
          price: 560,
-         canPurchase: true,
-      },
-  ];
+         rentaCar: true,
+         soldOut: true,
+
+      }]
+  
 })();
 // };
 
