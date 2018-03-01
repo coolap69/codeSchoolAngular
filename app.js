@@ -4,8 +4,7 @@
     var app = angular.module('rental', [ ]);
     
     app.controller('RentalController', function(){
-        this.products = LAPcars;
-    });
+      
 
     
 // Car image
@@ -69,7 +68,9 @@
          rentaCar: true,
          soldOut: true,
 
-      }]
+      }];
+        this.products = LAPcars;
+    });
   
 })();
 // };
