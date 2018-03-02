@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="rental">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>LAP Exotic Car Rentals</title>
+</head>
+
+<body class="container" ng-controller="RentalController as rental">
+    <h1 class="text-center">"LAP Exotic Car Rental"</h1>
+
+    <!--  Product Container  -->
+    <ul class="list-group">
+        <li class="list-group-items" ng-repeat="product in rental.products">
+            <h2>{{product.year}} {{product.make}} {{product.model}} {{product.available}} {{product.booked}} </h2>
+
+    <!-- Image Gallery  -->
+            <img ng-src="{{product.images[0].full}}" />
+            <button ng-show="product.rentaCar">Rent the Luxarious</button>
+
+            <div ng-hide="product.soldOut"> "Someone else has Rented this Beauty"
+            </div>
+    
+    <!-- Tabs  -->
+    <section ng-controller="PanelController as panel">
+        <ul class ="nav nav-pills">
+            <li ng-class="{ active:panel.isSelected(1) }">
+                <a href ng-click="panel.selectTab(1)">Descriptions</a>
+            </li>
+            <li ng-class="{ active:panel.isSelected(2) }">
+                <a href ng-click="panel.selectTab(2)">Price</a>
+            </li>
+            <li ng-class="{ active:panel.isSelected(3) }">
+                <a href ng-click="panel.selectTab(3)">Reviews</a>
+            </li>
+            </ul>
+        {{tab}}
+    
+     <!--Show Tabs  -->
+    <div class="panel" ng-show="panel.isSelected(1)">
+        <h3>Description</h3>
+        <p>{{product.description}}</p>
+    </div>
+    
+     <div class="panel" ng-show="panel.isSelected(2)">
+        <h3>Price</h3>
+        <p>{{product.price | currency}} per day </p>
+    </div>
+    
+     <div class="panel" ng-show="panel.isSelected(3)">
+        <h3>Reviews</h3>
+        <blockquote>none yet</blockquote>
+    </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js" integrity="sha256-7ngBGhPctUEyXLD6ha53TFUaqhBCnXFOi712aqBq094=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+</body>
+
+</html>
