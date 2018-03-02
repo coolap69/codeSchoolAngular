@@ -11,16 +11,19 @@
 
 <body class="container" ng-controller="RentalController as rental">
     <h1 class="text-center">"LAP Exotic Car Rental"</h1>
+
+    <!--  Product Container  -->
     <ul class="list-group">
-        <li class="list-group-items" ng-repeat="product in store.products">
-    <h2>{{product.make}} {{product.model}} {{product.year}} {{product.description}}
-    {{product.available}} {{product.booked}} ${{product.price}}</h2>
-    <!--<div ng-repeat ="product in rental.products" class="product row">-->
-    <!--<div ng-hide ="product.soldOut">-->
-    <!--<button ng-show ="product.rentaCar">Rent a Car</button>-->
-    <!--</div>-->
-    <!--</div>-->
-    </li>
+        <li class="list-group-items" ng-repeat="product in rental.products">
+            <h2>{{product.make}} {{product.model}} {{product.year}} {{product.description}} {{product.available}} {{product.booked}} {{product.price | currency}} per day</h2>
+
+    <!-- Image Gallery  -->
+            <img ng-src="{{product.images[0].full}}" />
+            <button ng-show="product.rentaCar">Rent the Luxarious</button>
+
+            <div ng-hide="product.soldOut"> "Someone else has Rented this Beauty"
+            </div>
+        </li>
     </ul>
     <!--<ul class="list-group" ng-repeat="product in rental.products">-->
     <!--    <li class="list-group-item" >-->
@@ -31,7 +34,7 @@
     <!--        </div>-->
     <!--        <h4 ng-hide="{{product.unavailable}}">{{product.price | currency}} per day</h4>-->
     <!--        <h4 ng-show="{{product.unavailable}}">{{product.unavailableText}}</h4>-->
-            
+
     <!--        <section ng-init="tab = 1" >-->
     <!--            <ul class="nav nav-pills">-->
     <!--                <li ng-class="{ active: tab === 1 }">-->
@@ -63,24 +66,27 @@
     <!--    </li>-->
     <!--</ul>-->
 
- <!--<h3>Renter's Name</h3>-->
- <!--   <form id="rentCar">-->
-        
- <!--       <h1>Type of Car </h1>-->
+    <!--<h3>Renter's Name</h3>-->
+    <!--   <form id="rentCar">-->
 
- <!--           <h3>Car Info</h3>-->
- <!--           <p>Available:<span id="available"></p>-->
- <!--           <p>Price:<span id="price"></p>-->
-            
- <!--       <br>-->
- <!--       <input type="submit" value="Submit">-->
-    
-        <!--<button type="submit">Submit </button>-->
+    <!--       <h1>Type of Car </h1>-->
+
+    <!--           <h3>Car Info</h3>-->
+    <!--           <p>Available:<span id="available"></p>-->
+    <!--           <p>Price:<span id="price"></p>-->
+
+    <!--       <br>-->
+    <!--       <input type="submit" value="Submit">-->
+
+    <!--<button type="submit">Submit </button>-->
     <!--</form>-->
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>-->
     <!--<script type="text/javascript" src="angular.min.js"></script>-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js" integrity="sha256-7ngBGhPctUEyXLD6ha53TFUaqhBCnXFOi712aqBq094=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="app.js"></script>
+
 </body>
 
 </html>
