@@ -6,6 +6,18 @@
     app.controller('RentalController', function(){
         this.products = LAPcars;
     });
+    
+    app.controller('PanelController', function(){
+        this.tab = 1;
+        
+        this.selectTab = function(setTab) {
+            this.tab = setTab;
+        };
+        
+        this.isSelected = function(checkTab){
+            return this.tab === checkTab;
+        };
+    });
 
     
 // Car image

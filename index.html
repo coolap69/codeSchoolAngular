@@ -15,7 +15,7 @@
     <!--  Product Container  -->
     <ul class="list-group">
         <li class="list-group-items" ng-repeat="product in rental.products">
-            <h2>{{product.make}} {{product.model}} {{product.year}} {{product.description}} {{product.available}} {{product.booked}} {{product.price | currency}} per day</h2>
+            <h2>{{product.year}} {{product.make}} {{product.model}} {{product.available}} {{product.booked}} </h2>
 
     <!-- Image Gallery  -->
             <img ng-src="{{product.images[0].full}}" />
@@ -23,66 +23,38 @@
 
             <div ng-hide="product.soldOut"> "Someone else has Rented this Beauty"
             </div>
-        </li>
-    </ul>
-    <!--<ul class="list-group" ng-repeat="product in rental.products">-->
-    <!--    <li class="list-group-item" >-->
-    <!--        <h2>{{product.year}} {{product.make}} {{product.model}} {{product.type}}</h2>-->
-    <!--        <img ng-src="{{product.images[0].full}}"/>-->
-    <!--        <div>-->
-    <!--        <button id="rentButton" ng-click="decreaseNumAvail(product)" ng-hide="{{product.unavailable}}" class="btn btn-danger">Rent Now</button>-->
-    <!--        </div>-->
-    <!--        <h4 ng-hide="{{product.unavailable}}">{{product.price | currency}} per day</h4>-->
-    <!--        <h4 ng-show="{{product.unavailable}}">{{product.unavailableText}}</h4>-->
-
-    <!--        <section ng-init="tab = 1" >-->
-    <!--            <ul class="nav nav-pills">-->
-    <!--                <li ng-class="{ active: tab === 1 }">-->
-    <!--                    <a href ng-click="tab = 1">Description</a>-->
-    <!--                </li>-->
-    <!--                <li ng-class="{ active: tab === 2 }">-->
-    <!--                    <a href ng-click="tab = 2">Specs</a>-->
-    <!--                </li>-->
-    <!--            </ul>-->
-    <!--        </section>-->
-    <!--            <div class="panel" ng-show="tab === 1">-->
-    <!--                <h4>Description</h4>-->
-    <!--                <p>{{product.description}}</p>-->
-    <!--            </div>-->
-    <!--            <div class="panel" ng-show="tab === 2">-->
-    <!--                <h4>Specs</h4>-->
-    <!--                <ul>-->
-    <!--                    <li>-->
-    <!--                        {{product.specs[0].transmission}}-->
-    <!--                    </li>-->
-    <!--                    <li>-->
-    <!--                        {{product.specs[0].drivetrain}}-->
-    <!--                    </li>-->
-    <!--                    <li>-->
-    <!--                        {{product.specs[0].mpg}}-->
-    <!--                    </li>-->
-    <!--                </ul>-->
-    <!--            </div>-->
-    <!--    </li>-->
-    <!--</ul>-->
-
-    <!--<h3>Renter's Name</h3>-->
-    <!--   <form id="rentCar">-->
-
-    <!--       <h1>Type of Car </h1>-->
-
-    <!--           <h3>Car Info</h3>-->
-    <!--           <p>Available:<span id="available"></p>-->
-    <!--           <p>Price:<span id="price"></p>-->
-
-    <!--       <br>-->
-    <!--       <input type="submit" value="Submit">-->
-
-    <!--<button type="submit">Submit </button>-->
-    <!--</form>-->
-
-    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>-->
-    <!--<script type="text/javascript" src="angular.min.js"></script>-->
+    
+    <!-- Tabs  -->
+    <section ng-controller="PanelController as panel">
+        <ul class ="nav nav-pills">
+            <li ng-class="{ active:panel.isSelected(1) }">
+                <a href ng-click="panel.selectTab(1)">Descriptions</a>
+            </li>
+            <li ng-class="{ active:panel.isSelected(2) }">
+                <a href ng-click="panel.selectTab(2)">Price</a>
+            </li>
+            <li ng-class="{ active:panel.isSelected(3) }">
+                <a href ng-click="panel.selectTab(3)">Reviews</a>
+            </li>
+            </ul>
+        {{tab}}
+    
+     <!--Show Tabs  -->
+    <div class="panel" ng-show="panel.isSelected(1)">
+        <h3>Description</h3>
+        <p>{{product.description}}</p>
+    </div>
+    
+     <div class="panel" ng-show="panel.isSelected(2)">
+        <h3>Price</h3>
+        <p>{{product.price | currency}} per day </p>
+    </div>
+    
+     <div class="panel" ng-show="panel.isSelected(3)">
+        <h3>Reviews</h3>
+        <blockquote>none yet</blockquote>
+    </div>
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js" integrity="sha256-7ngBGhPctUEyXLD6ha53TFUaqhBCnXFOi712aqBq094=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="app.js"></script>
