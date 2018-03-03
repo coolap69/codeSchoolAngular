@@ -48,8 +48,23 @@
                  full: 'images/2017-Audi-R8-V10-Plus-1-min.png',
                 //  thumb: 'images/2017-Audi-R8-V10-Plus-2-min.png',
              }
-             ],
+             ], 
+         reviews: [
+             {
+                 stars: 5,
+                 body: "I Adore this Sweet Ride",
+                 author: "coolap69@aol.com",
+                 
+             },
              
+               {
+                 stars: 1,
+                 body: "Bad Experience",
+                 author: "coolap69@aol.com",
+                 
+             },
+             ],
+            
          booked: 0,
          price: 860,
          rentaCar: true,

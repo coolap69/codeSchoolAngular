@@ -19,7 +19,7 @@
 
     <!-- Image Gallery  -->
             <img ng-src="{{product.images[0].full}}" />
-            <button ng-show="product.rentaCar">Rent the Luxarious</button>
+            <button ng-show="product.rentaCar">Rent the Luxarluxurioious</button>
 
             <div ng-hide="product.soldOut"> "Someone else has Rented this Beauty"
             </div>
@@ -51,9 +51,35 @@
     </div>
     
      <div class="panel" ng-show="panel.isSelected(3)">
+        <ul>
         <h3>Reviews</h3>
-        <blockquote>none yet</blockquote>
-    </div>
+        <li ng-repeat="review in product.reviews">
+            <blockquote><b>Stars:{{review.starts}}</b>
+            {{review.body}}
+            <cite class="clearfix">by: {{review.author}}</cite>
+        </blockquote>
+        </li>
+        </ul>
+        
+        <form name="reviewForm">
+            <blockquote>
+                <b>Stars: {{review.stars}}</b>
+                {{review.body}}
+                <cite class="clearfix">by: {{review.author}}</cite>
+            </blockquote>
+            <select ng-model ="review.stars">
+                <option value="1"> 1 star</option>
+                <option value="2"> 2 stars</option>
+                <option value="3"> 3 stars</option>
+                <option value="4"> 4 stars</option>
+                <option value="5"> 5 stars</option>
+            </select>
+            <textarea ng-model=review.body></textarea>
+            <label>by:</label>
+            <input ng-model="review.author" type="email" />
+            <input type= "submit" value="Submit" />
+        </form>
+
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js" integrity="sha256-7ngBGhPctUEyXLD6ha53TFUaqhBCnXFOi712aqBq094=" crossorigin="anonymous"></script>
