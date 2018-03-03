@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <title>LAP Exotic Car Rentals</title>
 </head>
 
 <body class="container" ng-controller="RentalController as rental">
-    <h1 class="text-center">"LAP Exotic Car Rental"</h1>
-
+    <!-- header -->
+       <div class= "top">Exotic Car Rental by LAP</div>
+       
     <!--  Product Container  -->
     <ul class="list-group">
         <li class="list-group-items" ng-repeat="product in rental.products">
@@ -19,8 +21,9 @@
 
     <!-- Image Gallery  -->
             <img ng-src="{{product.images[0].full}}" />
-            <button ng-show="product.rentaCar">Rent the Luxarluxurioious</button>
-
+            <fieldset>
+            <button ng-show="product.rentaCar">Rent the Luxurious</button>
+            </fieldset>
             <div ng-hide="product.soldOut"> "Someone else has Rented this Beauty"
             </div>
     
@@ -40,7 +43,7 @@
         {{tab}}
     
      <!--Show Tabs  -->
-    <div class="panel" ng-show="panel.isSelected(1)">
+   <div class="panel" ng-show="panel.isSelected(1)">
         <h3>Description</h3>
         <p>{{product.description}}</p>
     </div>
@@ -60,8 +63,11 @@
         </blockquote>
         </li>
         </ul>
-        
+         
+         <!--Form  -->
+         
         <form name="reviewForm">
+            <fieldset>
             <blockquote>
                 <b>Stars: {{review.stars}}</b>
                 {{review.body}}
@@ -73,13 +79,13 @@
                 <option value="3"> 3 stars</option>
                 <option value="4"> 4 stars</option>
                 <option value="5"> 5 stars</option>
-            </select>
-            <textarea ng-model=review.body></textarea>
+          </select>
+            <textarea ng-model=review.body class="form-control" placeholder="write a review"></textarea>
             <label>by:</label>
-            <input ng-model="review.author" type="email" />
+            <input ng-model="review.author" type="email" placeholder="youremail@example.org" />
             <input type= "submit" value="Submit" />
+            </fieldset>
         </form>
-
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js" integrity="sha256-7ngBGhPctUEyXLD6ha53TFUaqhBCnXFOi712aqBq094=" crossorigin="anonymous"></script>
