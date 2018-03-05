@@ -6,21 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <title>LAP Exotic Car Rentals</title>
 </head>
 
 <body class="container" ng-controller="RentalController as rental">
-    <h1 class="text-center">"LAP Exotic Car Rental"</h1>
-
+    <!-- header -->
+       <div class= "top">Exotic Car Rental by LAP</div>
+       
     <!--  Product Container  -->
     <ul class="list-group">
         <li class="list-group-items" ng-repeat="product in rental.products">
-            <h2>{{product.year}} {{product.make}} {{product.model}} {{product.available}} {{product.booked}} </h2>
+            <h2>{{product.year}} {{product.make}} {{product.model}}</h2>
+            <h3> Available: {{product.available}}</h3>
+            <h3>Booked: {{product.booked}} </h3>
 
     <!-- Image Gallery  -->
             <img ng-src="{{product.images[0].full}}" />
-            <button ng-show="product.rentaCar">Rent the Luxarious</button>
-
+            <fieldset>
+            <button ng-show="product.rentaCar">Rent Luxury Now</button>
+            </fieldset>
             <div ng-hide="product.soldOut"> "Someone else has Rented this Beauty"
             </div>
     
@@ -40,7 +45,7 @@
         {{tab}}
     
      <!--Show Tabs  -->
-    <div class="panel" ng-show="panel.isSelected(1)">
+   <div class="panel" ng-show="panel.isSelected(1)">
         <h3>Description</h3>
         <p>{{product.description}}</p>
     </div>
@@ -51,9 +56,42 @@
     </div>
     
      <div class="panel" ng-show="panel.isSelected(3)">
+        <ul>
         <h3>Reviews</h3>
-        <blockquote>none yet</blockquote>
-    </div>
+        <li ng-repeat="review in product.reviews">
+            <blockquote><b>Stars:{{review.starts}}</b>
+            {{review.stars}}
+            <p>{{review.body}}</p>
+            <cite class="clearfix">by: {{review.author}}</cite>
+        </blockquote>
+        </li>
+        </ul>
+         
+         <!--Form  -->
+         
+        <form name="reviewForm" ng-controller= "ReviewController as reviewCtrl"
+        ng-submit= "reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+            <fieldset>
+            <blockquote>
+                <b>Stars: {{reviewCtrl.review.stars}}</b>
+                {{reviewCtrl.review.body}}
+                <cite class="clearfix">by: {{reviewCtrl.review.author}}</cite>
+            </blockquote>
+            <select ng-model ="reviewCtrl.review.stars" required>
+                <option value=*> *</option>
+                <option value=**> **</option>
+                <option value=***> ***</option>
+                <option value=****> ****</option>
+                <option value=*****> *****</option>
+          </select>
+            <textarea ng-model= "reviewCtrl.review.body" class="form-control" placeholder="write a review" required></textarea>
+            <label>by:</label>
+            <input ng-model="reviewCtrl.review.author" type="email" placeholder="youremail@example.org" required />
+            
+            <div> reviewForm is {{reviewForm.$valid}}</div>
+            <input type= "submit" value="Submit" />
+            </fieldset>
+        </form>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js" integrity="sha256-7ngBGhPctUEyXLD6ha53TFUaqhBCnXFOi712aqBq094=" crossorigin="anonymous"></script>

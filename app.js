@@ -1,4 +1,4 @@
-/* global $ angular */
+/* global $ * angular */ 
 
 (function(){
     var app = angular.module('rental', [ ]);
@@ -18,6 +18,17 @@
             return this.tab === checkTab;
         };
     });
+    
+    app.controller('ReviewController', function(){
+       this.review = {};
+       
+       this.addReview = function(product) {
+           product.reviews.push(this.review);
+           this.review = {};
+       };
+    });
+    
+    
 
     
 // Car image
@@ -42,14 +53,29 @@
          model: "R8 V10 Plus",
          year: 2017,
          description: 'Sport, 2 door, all wheel drive, Power comes from a 610-horsepower, 5.2-liter V10 engine.',
-         available: 10,
+         available: 5,
          images: [
              {
                  full: 'images/2017-Audi-R8-V10-Plus-1-min.png',
                 //  thumb: 'images/2017-Audi-R8-V10-Plus-2-min.png',
              }
-             ],
+             ], 
+         reviews: [
+             {
+                 stars: "*****",
+                 body: "I Adore this Sweet Ride",
+                 author: "coolap69@aol.com",
+                 
+             },
              
+               {
+                 stars: "*",
+                 body: "Bad Experience",
+                 author: "coolap69@aol.com",
+                 
+             },
+             ],
+            
          booked: 0,
          price: 860,
          rentaCar: true,
@@ -63,11 +89,26 @@
          year: 2017,
          description: "Sport, 2 door, all wheel drive, Power comes from a 759-horsepower, 6.5-liter V12 engine.",
          available: 2,
-          images: [
+         images: [
              {
-                 full: 'images/Lamborghini-Centenario1.png',
+                 full: 'images/Lamborghini-Centenario1small.png',
                 //  thumb: 'images/2017-Audi-R8-V10-Plus-2-min.png',
              }
+             ],
+         reviews: [
+             {
+                 stars: "****",
+                 body: "Sweet Ride",
+                 author: "coolap69@aol.com",
+                 
+             },
+             
+               {
+                 stars: "***",
+                 body: "Alright",
+                 author: "coolap69@aol.com",
+                 
+             },
              ],
          booked: 0,
          price: 2560,
@@ -88,43 +129,19 @@
                 //  thumb: 'images/2017-Audi-R8-V10-Plus-2-min.png',
              }
              ],
+         reviews: [
+             {
+                 stars: "**",
+                 body: "OK",
+                 author: "coolap69@aol.com",
+                 
+             },
+             ],
          booked: 0,
          price: 4500,
          rentaCar: true,
          soldOut: false,
 
-      }]
-  
+      }];
+      
 })();
-// };
-
-// for (var i = 0; i < cars.type.length; i++) {
-//   var options = document.createElement("OPTION");
-//   options.innerHTML = cars.type[i].model;
-//   document.getElementById("optionTags").appendChild(options);
-
-//   options.setAttribute("value", i);
-//   document.getElementById("available").innerHTML = cars.type[0].available;
-//   document.getElementById("price").innerHTML = cars.type[0].price;
-// }
-
-
-// document.getElementById("optionTags").onchange = function() {
-//   var val = document.getElementById("optionTags").value;
-//   val = parseInt(val);
-//   document.getElementById("available").innerHTML = cars.type[val].available;
-//   document.getElementById("price").innerHTML = cars.type[val].price;
-
-// };
-
-// // function rent() {
-// //    var renterName = document.getElementById("fname").value;
-// //    var typeCar = document.getElementById("optionTags") cars.type[].;
-
-// // }
-
-// document.getElementById("rentCar").onsubmit = function(event) {
-//   // console.log ("submit")
-//   event.preventDefault();
-
-// };

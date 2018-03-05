@@ -1,0 +1,44 @@
+h1 {
+    font-family: 'times', sans-serif;
+    color: #00688B;
+    font-weight: 300;
+
+}
+
+p {
+    font-family: 'times', sans-serif;
+    color: #00688B;
+    font-weight: 300;
+}
+
+h2 {
+    color: #00688B;
+}
+
+h3 {
+    color: #00688B;
+    font-size: 20px;
+}
+ul {
+    list-style-type:none
+}
+
+.top {
+    background-color: #00688B;
+    color: #ffffff;
+    font-size: 50px;
+    text-align: center;
+    text-shadow: rgb(0,0,0,0);
+}
+
+button {
+    margin-bottom: 10px;
+}
+
+.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+}
+
+.ng.valid.ng-dirty {
+    border-color: #78FA89;
+}
