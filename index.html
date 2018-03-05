@@ -17,7 +17,9 @@
     <!--  Product Container  -->
     <ul class="list-group">
         <li class="list-group-items" ng-repeat="product in rental.products">
-            <h2>{{product.year}} {{product.make}} {{product.model}} {{product.available}} {{product.booked}} </h2>
+            <h2>{{product.year}} {{product.make}} {{product.model}}</h2>
+            <h3> Available: {{product.available}}</h3>
+            <h3>Booked: {{product.booked}} </h3>
 
     <!-- Image Gallery  -->
             <img ng-src="{{product.images[0].full}}" />
@@ -58,6 +60,7 @@
         <h3>Reviews</h3>
         <li ng-repeat="review in product.reviews">
             <blockquote><b>Stars:{{review.starts}}</b>
+            {{review.stars}}
             <p>{{review.body}}</p>
             <cite class="clearfix">by: {{review.author}}</cite>
         </blockquote>
@@ -75,11 +78,11 @@
                 <cite class="clearfix">by: {{reviewCtrl.review.author}}</cite>
             </blockquote>
             <select ng-model ="reviewCtrl.review.stars" required>
-                <option value="1"> 1 star</option>
-                <option value="2"> 2 stars</option>
-                <option value="3"> 3 stars</option>
-                <option value="4"> 4 stars</option>
-                <option value="5"> 5 stars</option>
+                <option value=*> *</option>
+                <option value=**> **</option>
+                <option value=***> ***</option>
+                <option value=****> ****</option>
+                <option value=*****> *****</option>
           </select>
             <textarea ng-model= "reviewCtrl.review.body" class="form-control" placeholder="write a review" required></textarea>
             <label>by:</label>

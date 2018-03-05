@@ -1,14 +1,23 @@
-h1, p {
+h1 {
     font-family: 'times', sans-serif;
     color: #00688B;
+    font-weight: 300;
+
 }
 
-h1 {
+p {
+    font-family: 'times', sans-serif;
+    color: #00688B;
     font-weight: 300;
 }
 
 h2 {
     color: #00688B;
+}
+
+h3 {
+    color: #00688B;
+    font-size: 20px;
 }
 ul {
     list-style-type:none

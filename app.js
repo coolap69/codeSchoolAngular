@@ -1,4 +1,4 @@
-/* global $ angular */
+/* global $ * angular */ 
 
 (function(){
     var app = angular.module('rental', [ ]);
@@ -27,6 +27,8 @@
            this.review = {};
        };
     });
+    
+    
 
     
 // Car image
@@ -51,7 +53,7 @@
          model: "R8 V10 Plus",
          year: 2017,
          description: 'Sport, 2 door, all wheel drive, Power comes from a 610-horsepower, 5.2-liter V10 engine.',
-         available: 10,
+         available: 5,
          images: [
              {
                  full: 'images/2017-Audi-R8-V10-Plus-1-min.png',
@@ -60,14 +62,14 @@
              ], 
          reviews: [
              {
-                 stars: 5,
+                 stars: "*****",
                  body: "I Adore this Sweet Ride",
                  author: "coolap69@aol.com",
                  
              },
              
                {
-                 stars: 1,
+                 stars: "*",
                  body: "Bad Experience",
                  author: "coolap69@aol.com",
                  
@@ -95,14 +97,14 @@
              ],
          reviews: [
              {
-                 stars: 4,
+                 stars: "****",
                  body: "Sweet Ride",
                  author: "coolap69@aol.com",
                  
              },
              
                {
-                 stars: 3,
+                 stars: "***",
                  body: "Alright",
                  author: "coolap69@aol.com",
                  
@@ -129,7 +131,7 @@
              ],
          reviews: [
              {
-                 stars: 2,
+                 stars: "**",
                  body: "OK",
                  author: "coolap69@aol.com",
                  
@@ -140,6 +142,6 @@
          rentaCar: true,
          soldOut: false,
 
-      }]
-  
+      }];
+      
 })();
