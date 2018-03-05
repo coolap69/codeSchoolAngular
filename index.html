@@ -22,7 +22,7 @@
     <!-- Image Gallery  -->
             <img ng-src="{{product.images[0].full}}" />
             <fieldset>
-            <button ng-show="product.rentaCar">Rent the Luxurious</button>
+            <button ng-show="product.rentaCar">Rent Luxury Now</button>
             </fieldset>
             <div ng-hide="product.soldOut"> "Someone else has Rented this Beauty"
             </div>
@@ -58,7 +58,7 @@
         <h3>Reviews</h3>
         <li ng-repeat="review in product.reviews">
             <blockquote><b>Stars:{{review.starts}}</b>
-            {{review.body}}
+            <p>{{review.body}}</p>
             <cite class="clearfix">by: {{review.author}}</cite>
         </blockquote>
         </li>
@@ -66,23 +66,26 @@
          
          <!--Form  -->
          
-        <form name="reviewForm">
+        <form name="reviewForm" ng-controller= "ReviewController as reviewCtrl"
+        ng-submit= "reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
             <fieldset>
             <blockquote>
-                <b>Stars: {{review.stars}}</b>
-                {{review.body}}
-                <cite class="clearfix">by: {{review.author}}</cite>
+                <b>Stars: {{reviewCtrl.review.stars}}</b>
+                {{reviewCtrl.review.body}}
+                <cite class="clearfix">by: {{reviewCtrl.review.author}}</cite>
             </blockquote>
-            <select ng-model ="review.stars">
+            <select ng-model ="reviewCtrl.review.stars" required>
                 <option value="1"> 1 star</option>
                 <option value="2"> 2 stars</option>
                 <option value="3"> 3 stars</option>
                 <option value="4"> 4 stars</option>
                 <option value="5"> 5 stars</option>
           </select>
-            <textarea ng-model=review.body class="form-control" placeholder="write a review"></textarea>
+            <textarea ng-model= "reviewCtrl.review.body" class="form-control" placeholder="write a review" required></textarea>
             <label>by:</label>
-            <input ng-model="review.author" type="email" placeholder="youremail@example.org" />
+            <input ng-model="reviewCtrl.review.author" type="email" placeholder="youremail@example.org" required />
+            
+            <div> reviewForm is {{reviewForm.$valid}}</div>
             <input type= "submit" value="Submit" />
             </fieldset>
         </form>
