@@ -18,16 +18,19 @@
     <ul class="list-group">
         <li class="list-group-items" ng-repeat="product in rental.products">
             <h2>{{product.year}} {{product.make}} {{product.model}}</h2>
-            <h3> Available: {{product.available}}</h3>
+            <h3>Available: {{product.available}}</h3>
             <h3>Booked: {{product.booked}} </h3>
 
     <!-- Image Gallery  -->
             <img ng-src="{{product.images[0].full}}" />
             <fieldset>
             <button ng-show="product.rentaCar">Rent Luxury Now</button>
+           <!--<button ng-controller= "RentController as rentaCar">Rent Luxury Now</button>-->
+            
             </fieldset>
-            <div ng-hide="product.soldOut"> "Someone else has Rented this Beauty"
+            <div ng-hide="product.soldOut">*Not Available*
             </div>
+
     
     <!-- Tabs  -->
     <section ng-controller="PanelController as panel">

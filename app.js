@@ -7,6 +7,16 @@
         this.products = LAPcars;
     });
     
+    //   app.controller('RentController', function(){
+    //   this.renta = {};
+       
+    //   this.addReview = function(product) {
+    //       product.rentaCar.push(this.renta);
+    //       this.renta = {};
+    //   };
+    // });
+    
+    
     app.controller('PanelController', function(){
         this.tab = 1;
         
@@ -28,15 +38,6 @@
        };
     });
     
-    
-
-    
-// Car image
-// Car type
-// Car description
-// Daily rental price: add a filter to print as currency
-// Rent now button
-// Add something else of your own choosing
     
     var LAPcars = [{
         
