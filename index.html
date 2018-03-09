@@ -23,13 +23,23 @@
 
     <!-- Image Gallery  -->
             <img ng-src="{{product.images[0].full}}" />
+            
+           <!--<div ng-controller="confirmationSection as confirm">-->
+           <!--    <input type= "checkbox" name="confirm" id="confirmation"><label>I agree to Terms and Conditions</label>-->
+           <!--</div>-->
+           <div id="confirmationSection">
+            <input type="checkbox" name="confirm" id="confirmation"><label>I agree to Terms and Conditions</label>
+            </div>
+            
+            
             <fieldset>
-            <button ng-show="product.rentaCar">Rent Luxury Now</button>
+    <!--    <button ng-hide="product.noneLeft" ng-controller = "RentController as rentCtrl" ng-click="rentCtrl.rentCar(product)">Rent</button>-->
+            <p ng-show="product.soldOut">*Currently Unavailable*</p>    
+            <button ng-hide="product.soldOut" ng-controller = "RentController as rentCtrl" ng-click= "rentCtrl.rentCar(product)">Rent Luxury Now</button>
            <!--<button ng-controller= "RentController as rentaCar">Rent Luxury Now</button>-->
             
             </fieldset>
-            <div ng-hide="product.soldOut">*Not Available*
-            </div>
+            
 
     
     <!-- Tabs  -->

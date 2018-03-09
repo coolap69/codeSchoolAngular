@@ -7,15 +7,16 @@
         this.products = LAPcars;
     });
     
-    //   app.controller('RentController', function(){
-    //   this.renta = {};
-       
-    //   this.addReview = function(product) {
-    //       product.rentaCar.push(this.renta);
-    //       this.renta = {};
-    //   };
-    // });
-    
+      app.controller('RentController', function(){
+       this.rentCar = function(product){
+           product.available-- && product.booked++
+           //console.log(product.booked + " " + product.make +"'s rented")
+           if (product.available === 0){
+                    product.soldOut = true;
+                };
+       };
+    });
+
     
     app.controller('PanelController', function(){
         this.tab = 1;
@@ -36,6 +37,23 @@
            product.reviews.push(this.review);
            this.review = {};
        };
+       
+       
+    //   app.controller('ConfirmationSection', function(){
+    //      this.confirm = {};
+         
+         
+    //      if (!document.getElementById('confirmation').checked) {
+    //     alert("Please agree to terms");
+        
+    //   });
+    // document.getElementById("reservationForm").onsubmit = function(event) {
+    // event.preventDefault();
+    // if (!document.getElementById("confirmation").checked) {
+    //     alert("Please agree to terms");
+    //     return;
+    // }
+    
     });
     
     
@@ -79,8 +97,8 @@
             
          booked: 0,
          price: 860,
-         rentaCar: true,
-         soldOut: true,
+        //  rentaCar: true,
+         soldOut: false,
          
       },
 
@@ -113,8 +131,8 @@
              ],
          booked: 0,
          price: 2560,
-         rentaCar: true,
-         soldOut: true,
+        //  rentaCar: true,
+         soldOut: false,
 
       },
 
@@ -140,9 +158,13 @@
              ],
          booked: 0,
          price: 4500,
-         rentaCar: true,
+        //  rentaCar: true,
          soldOut: false,
 
       }];
       
+
+      
 })();
+
+
